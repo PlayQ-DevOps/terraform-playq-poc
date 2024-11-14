@@ -24,3 +24,21 @@
 - we can accomplish this by running `terraform init` at build time
 - NOTE: Since we are using -backend=false during build time, we must therefore
   initialize the backend at runtime.
+
+### Builing the image
+
+Build the image
+
+- `docker build . -t my-terraform-image`A
+
+Create a volume to share data between container runs
+
+- `docker volume create working-dir`
+
+TODO: we need to initialize the remote backend at run time
+
+- `docker run --rm \ -v working-dir:/working_dir \ my-terraform-image \ terraform -chdir=/tf init`
+
+TODO: plan and apply commands
+
+- `docker run --rm \ -v working-dir:/working_dir \ my-terraform-image \ terraform -chdir=/tf plan`
