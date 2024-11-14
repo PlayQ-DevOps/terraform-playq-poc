@@ -1,0 +1,8 @@
+---
+version: "4.2.2"
+bucket: "dev-bucket"
+acl: "private"
+control_object_ownership: true
+object_ownership: "ObjectWriter"
+versioning:
+  enabled: true
