@@ -25,20 +25,40 @@
 - NOTE: Since we are using -backend=false during build time, we must therefore
   initialize the backend at runtime.
 
-### Builing the image
+### Building the image
 
 Build the image
 
-- `docker build . -t my-terraform-image`A
+```bash
+docker build . -t my-terraform-image
+```
 
 Create a volume to share data between container runs
 
-- `docker volume create working-dir`
+```bash
+docker volume create tf-data
+```
 
-TODO: we need to initialize the remote backend at run time
+Init
 
-- `docker run --rm \ -v working-dir:/working_dir \ my-terraform-image \ terraform -chdir=/tf init`
+- TODO: we need to initialize the remote backend at run time
 
-TODO: plan and apply commands
+```bash
+docker run --rm \
+  -v tf-data:/tf \
+  my-terraform-image \
+  terraform -chdir=/tf init
+```
 
-- `docker run --rm \ -v working-dir:/working_dir \ my-terraform-image \ terraform -chdir=/tf plan`
+Plan
+
+- mount the input.yaml file from host machine
+- TODO: we need to auth with aws
+
+```bash
+docker run --rm \
+  -v tf-data:/tf \
+  -v "$(pwd)/input.yaml:/tf/input.yaml" \
+  my-terraform-image \
+  terraform -chdir=/tf plan
+```
