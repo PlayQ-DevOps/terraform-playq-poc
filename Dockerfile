@@ -9,7 +9,8 @@ ENV TF_LOG=DEBUG
 
 COPY ./providers.tf /tf/providers.tf
 COPY ./main.tf /tf/main.tf
-COPY ./modules /tf/modules 
+COPY ./modules /tf/modules
+RUN mkdir /empty_dir
 
 WORKDIR /tf
 
@@ -23,6 +24,7 @@ ENV PATH=/bin
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=tf /tf /tf
 COPY --from=tf /bin/terraform /bin/terraform
+COPY --from=tf /empty_dir /tmp
 
 WORKDIR /working_dir
 
