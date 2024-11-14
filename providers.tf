@@ -7,3 +7,11 @@ terraform {
   }
   required_version = ">= 1.5"
 }
+
+terraform {
+  backend "local" {}
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
