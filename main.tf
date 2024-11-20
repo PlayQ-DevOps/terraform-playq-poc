@@ -1,10 +1,14 @@
-locals {
-  input_file         = "./input.yaml"
-  input_file_content = fileexists(local.input_file) ? file(local.input_file) : "NoInputFileFound: true"
-  input              = yamldecode(local.input_file_content)
-}
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "4.2.2"
 
-module "private_bucket" {
-  source = "./modules/s3/wrapper"
-  input  = local.input
+  bucket = var.input.bucket
+  acl    = var.input.acl
+
+  control_object_ownership = var.input.control_object_ownership
+  object_ownership         = var.input.object_ownership
+
+  versioning = {
+    enabled = var.input.versioning.enabled
+  }
 }
