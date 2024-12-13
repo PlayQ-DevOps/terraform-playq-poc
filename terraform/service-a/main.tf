@@ -8,13 +8,13 @@ module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "4.2.2"
 
-  bucket = "${var.inputs.bucket}-${random_string.suffix.result}"
-  acl    = var.inputs.acl
+  bucket = "${var.bucket}-${random_string.suffix.result}"
+  acl    = var.acl
 
-  control_object_ownership = var.inputs.control_object_ownership
-  object_ownership         = var.inputs.object_ownership
+  control_object_ownership = var.control_object_ownership
+  object_ownership         = var.object_ownership
 
   versioning = {
-    enabled = var.inputs.versioning.enabled
+    enabled = var.versioning.enabled
   }
 }
