@@ -1,0 +1,21 @@
+name: Terragrunt Plan devopssandbox/service-a
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "devopssandbox/service-a/terragrunt.hcl"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "devopssandbox/service-a/terragrunt.hcl"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Terragrunt Plan using custom action
+        uses: ./.github/actions/run-terragrunt-plan
+        with:
+          path: devopssandbox/service-a
