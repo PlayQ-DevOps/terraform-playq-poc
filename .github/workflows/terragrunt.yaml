@@ -1,0 +1,40 @@
+name: Terragrunt Plan
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "environments/**/*.hcl"
+
+jobs:
+  terragrunt-plan:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment:
+          - environments/devopssandbox/service-a
+          - environments/devopssandbox/service-b
+          - environments/devopssandbox/service-c
+          - environments/staging/service-a
+          - environments/staging/service-b
+          - environments/staging/service-c
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Check if directory changed
+        id: check_changes
+        run: |
+          if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep "${{ matrix.environment }}/terragrunt.hcl"
+          then
+            echo "run_plan=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_plan=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run terragrunt
+        if: steps.check_changes.outputs.run_plan == 'true'
+        run: |
+          cd ${{ matrix.environment }}
+          echo "${{ matrix.environment }}"
