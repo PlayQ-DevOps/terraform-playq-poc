@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../terraform/service-c"
+  source = "git::git@github.com:PlayQ-DevOps/terraform-playq-poc.git//terraform/service-c?ref=v0.0.1"
 }
 
 inputs = {
