@@ -17,10 +17,14 @@ jobs:
       - name: Detect changed directories
         id: detect_changes
         run: |
-          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'terragrunt.hcl' || true)
-          changed_dirs=$(echo "$changed_files" | xargs -n1 dirname | sort -u)
+          changed_files=$(echo "${{ toJson(github.event.head_commit) }}" | jq -r '[.modified[], .added[]] | unique[]' | grep 'terragrunt.hcl' || true)
 
-          changed_dirs_json=$(echo "$changed_dirs" | jq -R . | jq -s .)
+          if [ -z "$changed_files" ]; then
+            changed_dirs_json='[]'
+          else
+            changed_dirs=$(echo "$changed_files" | xargs -n1 dirname | sort -u)
+            changed_dirs_json=$(echo "$changed_dirs" | jq -R . | jq -s .)
+          fi
 
           echo "changed_dirs=$changed_dirs_json" >> $GITHUB_OUTPUT
 
