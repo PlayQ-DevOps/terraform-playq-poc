@@ -16,6 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Terragrunt Plan using custom action
-        uses: ./.github/actions/run-terragrunt-plan
+        uses: ../../../../../.github/actions/run-terragrunt-plan
         with:
-          path: devopssandbox/service-a
+          path: environments/devopssandbox/service-a
