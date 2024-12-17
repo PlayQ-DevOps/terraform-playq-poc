@@ -15,4 +15,5 @@ jobs:
         uses: gruntwork-io/terragrunt-action@v2
         with:
           tg_dir: ./environments/devopssandbox/service-a
+          tofu_version: 1.8.1
           tg_command: "plan"
