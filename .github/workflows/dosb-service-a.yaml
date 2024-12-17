@@ -1,0 +1,18 @@
+name: Devopssandbox Service A Deploy
+on:
+  push:
+    paths:
+      - "environments/devopssandbox/service-a/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Plan
+        uses: gruntwork-io/terragrunt-action@v2
+        with:
+          tg_dir: ./environments/devopssandbox/service-a
+          tg_command: "plan"
