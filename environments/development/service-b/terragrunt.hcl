@@ -1,10 +1,10 @@
 terraform {
-  source = "git::git@github.com:PlayQ-DevOps/terraform-playq-poc.git//terraform/service-b?ref=v0.0.1"
+  source = "git::https://github.com/PlayQ-DevOps/terraform-playq-poc.git//terraform/service-b?ref=v0.0.1"
 }
 
 inputs = {
   acl                      = "private"
-  bucket                   = "staging-service-b-bucket"
+  bucket                   = "dev-service-b-bucket"
   control_object_ownership = false
   object_ownership         = "ObjectWriter"
   versioning = {
