@@ -1,11 +1,11 @@
 terraform {
-  source = "git::https://github.com/PlayQ-DevOps/terraform-playq-poc.git//terraform/service-a?ref=v0.0.1"
+  source = "git::https://github.com/PlayQ-DevOps/terraform-playq-poc.git//terraform/service-a?ref=v0.0.3"
 }
 
 inputs = {
   acl                      = "private"
   bucket                   = "dosb-service-a-bucket"
-  control_object_ownership = false
+  control_object_ownership = true
   object_ownership         = "ObjectWriter"
   versioning = {
     enabled = true

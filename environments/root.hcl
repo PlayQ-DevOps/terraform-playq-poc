@@ -14,7 +14,7 @@ locals {
 
 # Generate an AWS provider block
 generate "provider" {
-  path      = "provider.tf"
+  path      = "providers.tf"
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 provider "aws" {
@@ -65,5 +65,4 @@ remote_state {
 inputs = merge(
   local.account_vars.locals,
   local.region_vars.locals,
-  local.environment_vars.locals,
 )
