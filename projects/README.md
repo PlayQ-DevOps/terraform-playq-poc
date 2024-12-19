@@ -1,6 +1,5 @@
-The projects folder is for the Tofu + Harness POC.
-
-- Harness Projects are how we manage AWS Accounts or Environments in Harness
+The projects folder is for the Tofu + Harness POC. Harness "projects" are how we
+manage AWS Accounts or Environments in the Harness platform.
 
 We can add workspace provisioning for each service. This creates a workspace for
 each environment <> service pair.
