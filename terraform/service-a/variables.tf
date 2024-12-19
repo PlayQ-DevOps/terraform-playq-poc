@@ -1,6 +1,6 @@
 variable "bucket" {
   type        = string
-  description = "The bucket name."
+  description = "The name of the bucket."
 }
 
 variable "acl" {
