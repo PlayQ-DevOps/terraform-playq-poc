@@ -5,7 +5,7 @@ variable "bucket" {
 
 variable "acl" {
   type        = string
-  description = "Specify private or public acl. THIS IS A TEST CHANGE."
+  description = "Specify private or public acl."
 }
 
 variable "control_object_ownership" {
