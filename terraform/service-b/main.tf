@@ -16,6 +16,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# TEST COMMIT
 resource "random_string" "suffix" {
   length  = 5
   upper   = false
