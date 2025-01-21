@@ -16,7 +16,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# AWESOME FEATURE
 resource "random_string" "suffix" {
   length  = 5
   upper   = false
