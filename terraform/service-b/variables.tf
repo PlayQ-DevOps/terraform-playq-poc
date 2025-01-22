@@ -10,7 +10,7 @@ variable "acl" {
 
 variable "control_object_ownership" {
   type        = bool
-  description = "Specify the object ownership control."
+  description = "Specify the object ownership control. YES."
 }
 
 variable "object_ownership" {
