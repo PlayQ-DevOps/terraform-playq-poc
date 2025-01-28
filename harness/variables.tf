@@ -1,18 +1,15 @@
-#
-
-variable "main_workflows" {
-  type = list(object({
-    workspace_name = string
-  }))
-  description = "List of workflow objects for main branch workflows."
-  default     = []
-}
-
-variable "release_workflows" {
-  type = list(object({
-    workspace_name      = string
-    changed_files_regex = string
-  }))
-  description = "List of workflow objects for release workflows."
-  default     = []
+variable "environments" {
+  description = "Map of environments."
+  type = object({
+    devopssandbox = object({
+      org_id     = string
+      project_id = string
+      workflows = list(object({
+        name                = string
+        changed_files       = string
+        module_file_path    = string
+        variables_file_path = string
+      }))
+    })
+  })
 }
