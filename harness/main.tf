@@ -1,7 +1,7 @@
 # Organization
 resource "harness_platform_organization" "organization" {
-  identifier = "POC_Platform_Infra"
-  name       = "POC Platform Infra"
+  identifier = "POC"
+  name       = "POC"
 }
 
 # Projects
