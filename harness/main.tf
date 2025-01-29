@@ -23,6 +23,7 @@ module "main_workflow" {
 
   source = "./modules/harness_main_workflow"
 
+  # these can simply come from a tofu ref
   git_ref    = var.environments.devopssandbox.git_ref
   org_id     = var.environments.devopssandbox.org_id
   project_id = var.environments.devopssandbox.project_id

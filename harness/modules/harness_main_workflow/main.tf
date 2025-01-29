@@ -1,9 +1,9 @@
 # Main Branch Workflow
 
 # Workspace
-resource "harness_platform_workspace" "example" {
-  name                    = var.name                                              # from environments key
+resource "harness_platform_workspace" "workspace" {
   identifier              = var.name                                              # from environments key
+  name                    = var.name                                              # from environments key
   org_id                  = var.org_id                                            # from environments key
   project_id              = var.project_id                                        # from environments key
   provisioner_type        = "terraform"                                           # hard code
@@ -24,78 +24,77 @@ resource "harness_platform_workspace" "example" {
 }
 
 # Pipeline
-#resource "harness_platform_pipeline" "example" {
-#  identifier = "identifier"
-#  org_id     = "orgIdentifier"
-#  project_id = "projectIdentifier"
-#  name       = "name"
-#  git_details {
-#    branch_name    = "branchName"
-#    commit_message = "commitMessage"
-#    file_path      = "filePath"
-#    connector_ref  = "connectorRef"
-#    store_type     = "REMOTE"
-#    repo_name      = "repoName"
-#  }
-#  tags = {}
-#  yaml = <<-EOT
-#    pipeline:
-#        name: ${var.name}
-#        identifier: ${var.name}
-#        tags: {}
-#        template:
-#            templateRef: account.platform_infra_main
-#            versionLabel: v0.0.1
-#            templateInputs:
-#                stages:
-#                    - stage:
-#                        identifier: main
-#                        type: IACM
-#                        spec:
-#                            workspace: ${var.name}
-#        projectIdentifier: ${var.project_id}
-#        orgIdentifier: ${var.org_id}
-#  EOT
-#}
-#
-## Trigger
-#resource "harness_platform_triggers" "example" {
-#  identifier = var.name
-#  org_id     = var.org_id
-#  project_id = var.project_id
-#  name       = var.name
-#  target_id  = var.name
-#  yaml       = <<-EOT
-#trigger:
-#  name: ${var.name}
-#  identifier: ${var.name}
-#  enabled: true
-#  encryptedWebhookSecretIdentifier: ""
-#  description: ""
-#  tags: {}
-#  orgIdentifier: ${var.org_id}
-#  stagesToExecute: []
-#  projectIdentifier: ${var.project_id}
-#  pipelineIdentifier: ${var.name}
-#  source:
-#    type: Webhook
-#    spec:
-#      type: Github
-#      spec:
-#        type: Push
-#        spec:
-#          connectorRef: playqpoc
-#          autoAbortPreviousExecutions: false
-#          payloadConditions:
-#            - key: changedFiles
-#              operator: In
-#              value: ${var.changed_files}
-#            - key: targetBranch
-#              operator: Equals
-#              value: main
-#          headerConditions: []
-#          repoName: terraform-playq-poc
-#          actions: []
-#      EOT
-#}
-#
+resource "harness_platform_pipeline" "pipeline" {
+  identifier = var.name
+  name       = var.name
+  org_id     = var.org_id
+  project_id = var.project_id
+  #  git_details {
+  #    branch_name    = "branchName"
+  #    commit_message = "commitMessage"
+  #    file_path      = "filePath"
+  #    connector_ref  = "connectorRef"
+  #    store_type     = "REMOTE"
+  #    repo_name      = "repoName"
+  #  }
+  yaml = <<-EOT
+    pipeline:
+        name: ${var.name}
+        identifier: ${var.name}
+        tags: {}
+        template:
+            templateRef: account.platform_infra_main
+            versionLabel: v0.0.1
+            templateInputs:
+                stages:
+                    - stage:
+                        identifier: main
+                        type: IACM
+                        spec:
+                            workspace: ${var.name}
+        projectIdentifier: ${var.project_id}
+        orgIdentifier: ${var.org_id}
+  EOT
+}
+
+# Trigger
+resource "harness_platform_triggers" "trigger" {
+  identifier = var.name
+  name       = var.name
+  org_id     = var.org_id
+  project_id = var.project_id
+  target_id  = harness_platform_pipeline.pipeline.id
+  yaml       = <<-EOT
+    trigger:
+      name: ${var.name}
+      identifier: ${var.name}
+      enabled: true
+      encryptedWebhookSecretIdentifier: ""
+      description: ""
+      tags: {}
+      orgIdentifier: ${var.org_id}
+      stagesToExecute: []
+      projectIdentifier: ${var.project_id}
+      pipelineIdentifier: ${var.name}
+      source:
+        type: Webhook
+        spec:
+          type: Github
+          spec:
+            type: Push
+            spec:
+              connectorRef: playqpoc
+              autoAbortPreviousExecutions: false
+              payloadConditions:
+                - key: changedFiles
+                  operator: In
+                  value: ${var.changed_files}
+                - key: targetBranch
+                  operator: Equals
+                  value: ${var.git_ref}
+              headerConditions: []
+              repoName: terraform-playq-poc
+              actions: []
+          EOT
+}
+
