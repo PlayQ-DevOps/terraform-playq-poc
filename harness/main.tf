@@ -8,8 +8,8 @@ resource "harness_platform_organization" "organization" {
 resource "harness_platform_project" "project" {
   for_each = var.environments
 
-  identifier = each.key
-  name       = each.key
+  identifier = each.value.identifier
+  name       = each.value.name
   org_id     = harness_platform_organization.organization.id
 }
 
