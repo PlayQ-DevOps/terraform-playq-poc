@@ -18,7 +18,7 @@ locals {
   #])
 }
 
-module "main_workflow" {
+module "dosb_workflow" {
   for_each = { for workflow in var.environments.devopssandbox.workflows : workflow.name => workflow }
 
   source = "./modules/harness_main_workflow"
@@ -32,6 +32,24 @@ module "main_workflow" {
   changed_files       = each.value.changed_files
   module_file_path    = each.value.module_file_path
   variables_file_path = each.value.variables_file_path
+}
+
+module "dev_workflow" {
+  for_each = { for workflow in var.environments.development.workflows : workflow.name => workflow }
+
+  source = "./modules/harness_release_workflow"
+
+  # these can simply come from a tofu ref
+  git_ref    = var.environments.devopssandbox.git_ref
+  org_id     = var.environments.devopssandbox.org_id
+  project_id = var.environments.devopssandbox.project_id
+
+  name                = each.value.name
+  changed_files       = each.value.changed_files
+  module_file_path    = each.value.module_file_path
+  variables_file_path = each.value.variables_file_path
+
+
 }
 
 # module "release_workflow" {
