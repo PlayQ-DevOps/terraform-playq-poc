@@ -1,21 +1,21 @@
 resource "harness_platform_workspace" "workspace" {
-  identifier              = var.name                                              # from environments key
-  name                    = var.name                                              # from environments key
-  org_id                  = var.org_id                                            # from environments key
-  project_id              = var.project_id                                        # from environments key
-  provisioner_type        = "terraform"                                           # hard code
-  provisioner_version     = "1.5.6"                                               # hard code
-  repository              = "https://github.com/PlayQ-DevOps/terraform-playq-poc" # hard code
-  repository_path         = var.module_file_path                                  # from workflow object
+  identifier              = var.name
+  name                    = var.name
+  org_id                  = var.org_id
+  project_id              = var.project_id
+  provisioner_type        = "terraform"
+  provisioner_version     = "1.5.6"
+  repository              = "terraform-playq-poc"
+  repository_path         = var.module_file_path
   repository_branch       = var.git_ref
   cost_estimation_enabled = false
-  provider_connector      = "" # hard code
-  repository_connector    = "" # hard code
+  provider_connector      = ""
+  repository_connector    = "account.PlayQDevOps"
 
   terraform_variable_file {
-    repository           = "https://github.com/PlayQ-DevOps/terraform-playq-poc" # hard code
-    repository_path      = var.variables_file_path                               # from workflow obj 
-    repository_connector = ""
+    repository           = "terraform-playq-poc"
+    repository_path      = var.variables_file_path
+    repository_connector = "account.PlayQDevOps"
     repository_branch    = var.git_ref
   }
 }
@@ -68,7 +68,7 @@ resource "harness_platform_triggers" "trigger" {
           spec:
             type: Push
             spec:
-              connectorRef: playqpoc
+              connectorRef: account.PlayQDevOps
               autoAbortPreviousExecutions: false
               payloadConditions:
                 - key: changedFiles

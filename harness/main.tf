@@ -33,7 +33,7 @@ module "dev_workflow" {
 
   source = "./modules/harness_release_workflow"
 
-  git_ref             = var.environments.devopssandbox.git_ref
+  git_ref             = var.environments.development.git_ref
   org_id              = harness_platform_organization.organization.id
   project_id          = harness_platform_project.project["development"].id
   name                = each.value.name
@@ -44,11 +44,11 @@ module "dev_workflow" {
 
 
 module "stg_workflow" {
-  for_each = { for workflow in var.environments.development.workflows : workflow.name => workflow }
+  for_each = { for workflow in var.environments.staging.workflows : workflow.name => workflow }
 
   source = "./modules/harness_release_workflow"
 
-  git_ref             = var.environments.devopssandbox.git_ref
+  git_ref             = var.environments.staging.git_ref
   org_id              = harness_platform_organization.organization.id
   project_id          = harness_platform_project.project["staging"].id
   name                = each.value.name
