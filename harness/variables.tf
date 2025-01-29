@@ -2,9 +2,7 @@ variable "environments" {
   description = "Map of environments."
   type = object({
     devopssandbox = object({
-      git_ref    = string
-      org_id     = string
-      project_id = string
+      git_ref = string
       workflows = list(object({
         name                = string
         changed_files       = string
@@ -14,9 +12,7 @@ variable "environments" {
     })
 
     development = object({
-      git_ref    = string
-      org_id     = string
-      project_id = string
+      git_ref = string
       workflows = list(object({
         name                = string
         changed_files       = string
@@ -27,9 +23,7 @@ variable "environments" {
 
 
     staging = object({
-      git_ref    = string
-      org_id     = string
-      project_id = string
+      git_ref = string
       workflows = list(object({
         name                = string
         changed_files       = string

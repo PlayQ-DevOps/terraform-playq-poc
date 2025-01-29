@@ -1,8 +1,6 @@
 environments = {
   devopssandbox = {
-    git_ref    = "main"
-    org_id     = ""
-    project_id = ""
+    git_ref = "main"
     workflows = [
       {
         name                = "poc_dosb_service_a"
@@ -20,9 +18,7 @@ environments = {
   }
 
   development = {
-    git_ref    = "<+pipeline.variables.GIT_TAG>"
-    org_id     = ""
-    project_id = ""
+    git_ref = "<+pipeline.variables.GIT_TAG>"
     workflows = [
       {
         name                = "poc_dev_service_a"
@@ -40,9 +36,7 @@ environments = {
   }
 
   staging = {
-    git_ref    = "<+pipeline.variables.GIT_TAG>"
-    org_id     = ""
-    project_id = ""
+    git_ref = "<+pipeline.variables.GIT_TAG>"
     workflows = [
       {
         name                = "poc_stg_service_a"
