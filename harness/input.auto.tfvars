@@ -1,5 +1,6 @@
 environments = {
   devopssandbox = {
+    color      = "#E8E9EB"
     git_ref    = "main"
     identifier = "dosb"
     name       = "DevOps Sandbox"
@@ -20,6 +21,7 @@ environments = {
   }
 
   development = {
+    color      = "#34D399"
     git_ref    = "<+pipeline.variables.GIT_TAG>"
     identifier = "dev"
     name       = "Development"
@@ -41,6 +43,7 @@ environments = {
   }
 
   staging = {
+    color      = "#FACC15"
     git_ref    = "<+pipeline.variables.GIT_TAG>"
     identifier = "stg"
     name       = "Staging"
@@ -60,4 +63,26 @@ environments = {
       }
     ]
   }
+
+  #production = {
+  #  color      = "#EF4444"
+  #  git_ref    = "<+pipeline.variables.GIT_TAG>"
+  #  identifier = "prd"
+  #  name       = "Production"
+
+  #  workflows = [
+  #    {
+  #      name                = "poc_prd_service_a"
+  #      changed_files       = "environments/production/service-a/.*,terraform/service-a/.*"
+  #      module_file_path    = "./terraform/service-a"
+  #      variables_file_path = "./environments/production/service-a/input.tfvars"
+  #    },
+  #    {
+  #      name                = "poc_prd_service_b"
+  #      changed_files       = "environments/production/service-b/.*,terraform/service-b/.*"
+  #      module_file_path    = "./terraform/service-b"
+  #      variables_file_path = "./environments/production/service-b/input.tfvars"
+  #    }
+  #  ]
+  #}
 }

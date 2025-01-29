@@ -1,6 +1,7 @@
 variable "environments" {
   description = "Map of all environments by name."
   type = map(object({
+    color      = string
     git_ref    = string
     identifier = string
     name       = string
