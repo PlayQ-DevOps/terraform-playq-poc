@@ -1,6 +1,3 @@
-# Main Branch Workflow
-
-# Workspace
 resource "harness_platform_workspace" "workspace" {
   identifier              = var.name                                              # from environments key
   name                    = var.name                                              # from environments key
@@ -23,25 +20,15 @@ resource "harness_platform_workspace" "workspace" {
   }
 }
 
-# Pipeline
 resource "harness_platform_pipeline" "pipeline" {
   identifier = var.name
   name       = var.name
   org_id     = var.org_id
   project_id = var.project_id
-  #  git_details {
-  #    branch_name    = "branchName"
-  #    commit_message = "commitMessage"
-  #    file_path      = "filePath"
-  #    connector_ref  = "connectorRef"
-  #    store_type     = "REMOTE"
-  #    repo_name      = "repoName"
-  #  }
-  yaml = <<-EOT
+  yaml       = <<-EOT
     pipeline:
         name: ${var.name}
         identifier: ${var.name}
-        tags: {}
         template:
             templateRef: account.platform_infra_main
             versionLabel: v0.0.1
@@ -57,7 +44,6 @@ resource "harness_platform_pipeline" "pipeline" {
   EOT
 }
 
-# Trigger
 resource "harness_platform_triggers" "trigger" {
   identifier = var.name
   name       = var.name
@@ -71,7 +57,6 @@ resource "harness_platform_triggers" "trigger" {
       enabled: true
       encryptedWebhookSecretIdentifier: ""
       description: ""
-      tags: {}
       orgIdentifier: ${var.org_id}
       stagesToExecute: []
       projectIdentifier: ${var.project_id}
@@ -97,4 +82,3 @@ resource "harness_platform_triggers" "trigger" {
               actions: []
           EOT
 }
-
