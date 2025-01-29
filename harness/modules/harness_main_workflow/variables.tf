@@ -22,3 +22,8 @@ variable "changed_files" {
   type        = string
   description = "The comma separated list of files to trigger on."
 }
+variable "git_ref" {
+  type        = string
+  description = "The branch or tag to reference from the git repository."
+
+}
