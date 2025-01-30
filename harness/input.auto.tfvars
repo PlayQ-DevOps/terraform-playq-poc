@@ -16,6 +16,12 @@ environments = {
         changed_files       = "environments/devopssandbox/service-b/.*,terraform/service-b/.*"
         module_file_path    = "./terraform/service-b"
         variables_file_path = "./environments/devopssandbox/service-b/input.tfvars"
+      },
+      {
+        name                = "poc_dosb_service_c"
+        changed_files       = "environments/devopssandbox/service-c/.*,terraform/service-c/.*"
+        module_file_path    = "./terraform/service-c"
+        variables_file_path = "./environments/devopssandbox/service-c/input.tfvars"
       }
     ]
   }
