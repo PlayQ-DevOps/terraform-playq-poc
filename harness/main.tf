@@ -27,9 +27,12 @@ module "dosb_workflow" {
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
   variables_file_paths = [
-    each.value.variables_file_path,
-    var.organization.projects.variables_file_path,
-    var.organization.variables_file_path
+    for path in [
+      each.value.variables_file_path,
+      var.organization.projects.variables_file_path,
+      var.organization.variables_file_path
+    ] : path
+    if path != null && path != ""
   ]
 }
 
@@ -45,9 +48,12 @@ module "dev_workflow" {
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
   variables_file_paths = [
-    each.value.variables_file_path,
-    var.organization.projects.variables_file_path,
-    var.organization.variables_file_path
+    for path in [
+      each.value.variables_file_path,
+      var.organization.projects.variables_file_path,
+      var.organization.variables_file_path
+    ] : path
+    if path != null && path != ""
   ]
 }
 
@@ -64,8 +70,11 @@ module "stg_workflow" {
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
   variables_file_paths = [
-    each.value.variables_file_path,
-    var.organization.projects.variables_file_path,
-    var.organization.variables_file_path
+    for path in [
+      each.value.variables_file_path,
+      var.organization.projects.variables_file_path,
+      var.organization.variables_file_path
+    ] : path
+    if path != null && path != ""
   ]
 }

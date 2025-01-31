@@ -13,11 +13,7 @@ resource "harness_platform_workspace" "workspace" {
   repository_connector    = "account.PlayQDevOps"
 
   dynamic "terraform_variable_file" {
-    for_each = [
-      for path in var.variables_file_paths :
-      path
-      if path != null && path != ""
-    ]
+    for_each = var.variables_file_paths
 
     content {
       repository           = "terraform-playq-poc"
