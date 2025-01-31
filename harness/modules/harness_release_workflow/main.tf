@@ -12,11 +12,19 @@ resource "harness_platform_workspace" "workspace" {
   provider_connector      = ""
   repository_connector    = "account.PlayQDevOps"
 
-  terraform_variable_file {
-    repository           = "terraform-playq-poc"
-    repository_path      = var.variables_file_path
-    repository_connector = "account.PlayQDevOps"
-    repository_commit    = var.git_ref
+  dynamic "terraform_variable_file" {
+    for_each = [
+      for path in var.variables_file_paths :
+      path
+      if path != null && path != ""
+    ]
+
+    content {
+      repository           = "terraform-playq-poc"
+      repository_path      = terraform_variable_file.value
+      repository_connector = "account.PlayQDevOps"
+      repository_branch    = var.git_ref
+    }
   }
 }
 

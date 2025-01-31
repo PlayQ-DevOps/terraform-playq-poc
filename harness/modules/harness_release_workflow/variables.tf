@@ -28,8 +28,8 @@ variable "project_id" {
   description = "The harness project identifier."
 }
 
-variable "variables_file_path" {
-  type        = string
-  description = "The relative file path from root to the tfvars file."
+variable "variables_file_paths" {
+  type        = list(string)
+  description = "The list of relative file paths from root to the tfvars files."
 }
 
