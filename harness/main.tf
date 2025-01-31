@@ -16,7 +16,7 @@ resource "harness_platform_project" "project" {
 
 # Workflows (Workspace, Pipeline, and Trigger)
 module "dosb_workflow" {
-  for_each = { for workflow in var.var.organization.projects.devopssandbox.workflows : workflow.name => workflow }
+  for_each = { for workflow in var.organization.projects.devopssandbox.workflows : workflow.name => workflow }
 
   source = "./modules/harness_main_workflow"
 
@@ -34,7 +34,7 @@ module "dosb_workflow" {
 }
 
 module "dev_workflow" {
-  for_each = { for workflow in var.var.organization.projects.development.workflows : workflow.name => workflow }
+  for_each = { for workflow in var.organization.projects.development.workflows : workflow.name => workflow }
 
   source = "./modules/harness_release_workflow"
 
