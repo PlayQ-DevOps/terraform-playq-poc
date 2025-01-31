@@ -6,7 +6,12 @@ resource "harness_platform_organization" "organization" {
 
 # Projects
 resource "harness_platform_project" "project" {
-  for_each = var.organization.projects
+  for_each = {
+    devopssandbox = var.organization.projects.devopssandbox
+    development   = var.organization.projects.development
+    staging       = var.organization.projects.staging
+    # production    = var.organization.projects.production
+  }
 
   color      = each.value.color
   identifier = each.value.identifier
