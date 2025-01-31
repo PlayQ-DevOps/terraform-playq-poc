@@ -54,6 +54,12 @@ organization = {
           changed_files       = "environments/development/service-b/.*,terraform/service-b/.*"
           module_file_path    = "./terraform/service-b"
           variables_file_path = "./environments/development/service-b/input.tfvars"
+        },
+        {
+          name                = "poc_dev_service_c"
+          changed_files       = "environments/development/service-c/.*,terraform/service-c/.*"
+          module_file_path    = "./terraform/service-c"
+          variables_file_path = "./environments/development/service-c/input.tfvars"
         }
       ]
     }
@@ -77,6 +83,12 @@ organization = {
           changed_files       = "environments/staging/service-b/.*,terraform/service-b/.*"
           module_file_path    = "./terraform/service-b"
           variables_file_path = "./environments/staging/service-b/input.tfvars"
+        },
+        {
+          name                = "poc_stg_service_c"
+          changed_files       = "environments/staging/service-c/.*,terraform/service-c/.*"
+          module_file_path    = "./terraform/service-c"
+          variables_file_path = "./environments/staging/service-c/input.tfvars"
         }
       ]
     }
