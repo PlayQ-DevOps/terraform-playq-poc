@@ -31,14 +31,11 @@ module "dosb_workflow" {
   name             = each.value.name
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
-  variables_file_paths = [
-    for path in [
-      each.value.variables_file_path,
-      var.organization.projects.variables_file_path,
-      var.organization.variables_file_path
-    ] : path
-    if path != null && path != ""
-  ]
+  variables_file_paths = concat(
+    coalesce(each.value.variables_file_paths, []),
+    coalesce(var.organization.projects["devopssandbox"].variables_file_paths, []),
+    coalesce(var.organization.variables_file_paths, [])
+  )
 }
 
 module "dev_workflow" {
@@ -52,14 +49,11 @@ module "dev_workflow" {
   name             = each.value.name
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
-  variables_file_paths = [
-    for path in [
-      each.value.variables_file_path,
-      var.organization.projects.variables_file_path,
-      var.organization.variables_file_path
-    ] : path
-    if path != null && path != ""
-  ]
+  variables_file_paths = concat(
+    coalesce(each.value.variables_file_paths, []),
+    coalesce(var.organization.projects["development"].variables_file_paths, []),
+    coalesce(var.organization.variables_file_paths, [])
+  )
 }
 
 
@@ -74,12 +68,9 @@ module "stg_workflow" {
   name             = each.value.name
   changed_files    = each.value.changed_files
   module_file_path = each.value.module_file_path
-  variables_file_paths = [
-    for path in [
-      each.value.variables_file_path,
-      var.organization.projects.variables_file_path,
-      var.organization.variables_file_path
-    ] : path
-    if path != null && path != ""
-  ]
+  variables_file_paths = concat(
+    coalesce(each.value.variables_file_paths, []),
+    coalesce(var.organization.projects["staging"].variables_file_paths, []),
+    coalesce(var.organization.variables_file_paths, [])
+  )
 }
