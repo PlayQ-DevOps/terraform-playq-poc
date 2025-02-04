@@ -7,12 +7,13 @@ variable "organization" {
     variables_file_paths = list(string)
     secrets_file_paths   = list(string)
 
-
     projects = map(object({
-      color      = string
-      git_ref    = string
-      identifier = string
-      name       = string
+      color                = string
+      git_ref              = string
+      identifier           = string
+      name                 = string
+      variables_file_paths = list(string)
+      secrets_file_paths   = list(string)
 
       workflows = list(object({
         name                 = string
