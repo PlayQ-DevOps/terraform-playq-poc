@@ -16,8 +16,8 @@ resource "harness_platform_workspace" "workspace" {
     for_each = var.environment_variables
 
     content {
-      key        = each.key
-      value      = each.value
+      key        = environment_variable.key
+      value      = environment_variable.value
       value_type = "string"
     }
   }
