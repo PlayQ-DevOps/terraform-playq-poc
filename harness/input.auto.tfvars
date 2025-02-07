@@ -34,7 +34,6 @@ organization = {
           name                  = "poc_dosb_service_b"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/devopssandbox/service-b/input.tfvars"]
-
         },
         {
           changed_files = "environments/devopssandbox/service-c/.*,terraform/service-c/.*"
@@ -45,7 +44,6 @@ organization = {
           name                 = "poc_dosb_service_c"
           secrets_file_paths   = []
           variables_file_paths = ["./environments/devopssandbox/service-c/input.tfvars"]
-
         }
       ]
     }
@@ -67,7 +65,6 @@ organization = {
           name                  = "poc_dev_service_a"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/development/service-a/input.tfvars"]
-
         },
         {
           changed_files         = "environments/development/service-b/.*,terraform/service-b/.*"
@@ -76,7 +73,6 @@ organization = {
           name                  = "poc_dev_service_b"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/development/service-b/input.tfvars"]
-
         },
         {
           changed_files         = "environments/development/service-c/.*,terraform/service-c/.*"
@@ -85,7 +81,6 @@ organization = {
           name                  = "poc_dev_service_c"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/development/service-c/input.tfvars"]
-
         }
       ]
     }
@@ -107,7 +102,6 @@ organization = {
           name                  = "poc_stg_service_a"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/staging/service-a/input.tfvars"]
-
         },
         {
           changed_files         = "environments/staging/service-b/.*,terraform/service-b/.*"
@@ -116,7 +110,6 @@ organization = {
           name                  = "poc_stg_service_b"
           secrets_file_paths    = []
           variables_file_paths  = ["./environments/staging/service-b/input.tfvars"]
-
         },
         {
           changed_files         = "environments/staging/service-c/.*,terraform/service-c/.*"

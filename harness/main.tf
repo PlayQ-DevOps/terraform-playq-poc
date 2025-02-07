@@ -10,7 +10,6 @@ resource "harness_platform_project" "project" {
     devopssandbox = var.organization.projects.devopssandbox
     development   = var.organization.projects.development
     staging       = var.organization.projects.staging
-    # production    = var.organization.projects.production
   }
 
   color      = each.value.color
@@ -25,17 +24,23 @@ module "dosb_workflow" {
 
   source = "./modules/harness_main_workflow"
 
+  changed_files = each.value.changed_files
+  environment_variables = merge(
+    # last entry takes precedence
+    var.organization.environment_variables,
+    var.organization.projects["devopssandbox"].environment_variables,
+    each.value.environment_variables
+  )
   git_ref          = var.organization.projects.devopssandbox.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["devopssandbox"].id
-  name             = each.value.name
-  changed_files    = each.value.changed_files
-  module_file_path = each.value.module_file_path
-  variables_file_paths = concat(
-    each.value.variables_file_paths,
-    var.organization.projects["devopssandbox"].variables_file_paths,
+  variables_file_paths = distinct(concat(
     var.organization.variables_file_paths,
-  )
+    var.organization.projects["devopssandbox"].variables_file_paths,
+    each.value.variables_file_paths,
+  ))
 }
 
 module "dev_workflow" {
@@ -43,17 +48,23 @@ module "dev_workflow" {
 
   source = "./modules/harness_release_workflow"
 
+  changed_files = each.value.changed_files
+  environment_variables = merge(
+    # last entry takes precedence
+    var.organization.environment_variables,
+    var.organization.projects["development"].environment_variables,
+    each.value.environment_variables
+  )
   git_ref          = var.organization.projects.development.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["development"].id
-  name             = each.value.name
-  changed_files    = each.value.changed_files
-  module_file_path = each.value.module_file_path
-  variables_file_paths = concat(
-    each.value.variables_file_paths,
-    var.organization.projects["development"].variables_file_paths,
+  variables_file_paths = distinct(concat(
     var.organization.variables_file_paths,
-  )
+    var.organization.projects["development"].variables_file_paths,
+    each.value.variables_file_paths,
+  ))
 }
 
 
@@ -62,15 +73,21 @@ module "stg_workflow" {
 
   source = "./modules/harness_release_workflow"
 
+  changed_files = each.value.changed_files
+  environment_variables = merge(
+    # last entry takes precedence
+    var.organization.environment_variables,
+    var.organization.projects["staging"].environment_variables,
+    each.value.environment_variables
+  )
   git_ref          = var.organization.projects.staging.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["staging"].id
-  name             = each.value.name
-  changed_files    = each.value.changed_files
-  module_file_path = each.value.module_file_path
-  variables_file_paths = concat(
-    each.value.variables_file_paths,
-    var.organization.projects["staging"].variables_file_paths,
+  variables_file_paths = distinct(concat(
     var.organization.variables_file_paths,
-  )
+    var.organization.projects["staging"].variables_file_paths,
+    each.value.variables_file_paths,
+  ))
 }

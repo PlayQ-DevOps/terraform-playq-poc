@@ -12,6 +12,16 @@ resource "harness_platform_workspace" "workspace" {
   provider_connector      = ""
   repository_connector    = "account.PlayQDevOps"
 
+  dynamic "environment_variable" {
+    for_each = var.environment_variables
+
+    content {
+      key        = each.key
+      value      = each.value
+      value_type = "string"
+    }
+  }
+
   dynamic "terraform_variable_file" {
     for_each = var.variables_file_paths
 

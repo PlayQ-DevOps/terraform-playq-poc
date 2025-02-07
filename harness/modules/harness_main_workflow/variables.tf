@@ -3,6 +3,11 @@ variable "changed_files" {
   description = "The comma separated list of files to trigger on."
 }
 
+variable "environment_variables" {
+  type        = map(string)
+  description = "The map of environment variables."
+}
+
 variable "git_ref" {
   type        = string
   description = "The branch or tag to reference from the git repository."
