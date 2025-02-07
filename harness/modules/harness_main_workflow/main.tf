@@ -27,7 +27,7 @@ resource "harness_platform_workspace" "workspace" {
 
     content {
       repository           = "terraform-playq-poc"
-      repository_path      = terraform_variable_file.value
+      repository_path      = each.value
       repository_connector = "account.PlayQDevOps"
       repository_branch    = var.git_ref
     }
