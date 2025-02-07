@@ -22,6 +22,7 @@ organization = {
         {
           changed_files         = "environments/devopssandbox/service-a/.*,terraform/service-a/.*"
           environment_variables = {}
+          identifier            = "poc_dosb_service_a"
           module_file_path      = "./terraform/service-a"
           name                  = "poc_dosb_service_a"
           secrets_file_paths    = []
@@ -30,6 +31,7 @@ organization = {
         {
           changed_files         = "environments/devopssandbox/service-b/.*,terraform/service-b/.*"
           environment_variables = {}
+          identifier            = "poc_dosb_service_b"
           module_file_path      = "./terraform/service-b"
           name                  = "poc_dosb_service_b"
           secrets_file_paths    = []
@@ -40,6 +42,7 @@ organization = {
           environment_variables = {
             "TEST_DOSB_SERVICE_C" = "TEST_DOSB_SERVICE_C"
           }
+          identifier           = "poc_dosb_service_c"
           module_file_path     = "./terraform/service-c"
           name                 = "poc_dosb_service_c"
           secrets_file_paths   = []
@@ -61,6 +64,7 @@ organization = {
         {
           changed_files         = "environments/development/service-a/.*,terraform/service-a/.*"
           environment_variables = {}
+          identifier            = "poc_dev_service_a"
           module_file_path      = "./terraform/service-a"
           name                  = "poc_dev_service_a"
           secrets_file_paths    = []
@@ -69,6 +73,7 @@ organization = {
         {
           changed_files         = "environments/development/service-b/.*,terraform/service-b/.*"
           environment_variables = {}
+          identifier            = "poc_dev_service_b"
           module_file_path      = "./terraform/service-b"
           name                  = "poc_dev_service_b"
           secrets_file_paths    = []
@@ -77,6 +82,7 @@ organization = {
         {
           changed_files         = "environments/development/service-c/.*,terraform/service-c/.*"
           environment_variables = {}
+          identifier            = "poc_dev_service_c"
           module_file_path      = "./terraform/service-c"
           name                  = "poc_dev_service_c"
           secrets_file_paths    = []
@@ -98,6 +104,7 @@ organization = {
         {
           changed_files         = "environments/staging/service-a/.*,terraform/service-a/.*"
           environment_variables = {}
+          identifier            = "poc_stg_service_a"
           module_file_path      = "./terraform/service-a"
           name                  = "poc_stg_service_a"
           secrets_file_paths    = []
@@ -106,6 +113,7 @@ organization = {
         {
           changed_files         = "environments/staging/service-b/.*,terraform/service-b/.*"
           environment_variables = {}
+          identifier            = "poc_stg_service_b"
           module_file_path      = "./terraform/service-b"
           name                  = "poc_stg_service_b"
           secrets_file_paths    = []
@@ -114,6 +122,7 @@ organization = {
         {
           changed_files         = "environments/staging/service-c/.*,terraform/service-c/.*"
           environment_variables = {}
+          identifier            = "poc_stg_service_c"
           module_file_path      = "./terraform/service-c"
           name                  = "poc_stg_service_c"
           secrets_file_paths    = []
