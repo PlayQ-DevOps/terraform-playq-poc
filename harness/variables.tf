@@ -2,7 +2,7 @@ variable "organization" {
   description = "PlayQ Harness Organization Object Schema."
 
   type = object({
-    environment_variables = map()
+    environment_variables = map(string)
     identifier            = string
     name                  = string
     secrets_file_paths    = list(string)
@@ -19,7 +19,7 @@ variable "organization" {
 
       workflows = list(object({
         changed_files         = string
-        environment_variables = map()
+        environment_variables = map(string)
         module_file_path      = string
         name                  = string
         secrets_file_paths    = list(string)
