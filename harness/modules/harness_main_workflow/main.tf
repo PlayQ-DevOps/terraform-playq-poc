@@ -16,8 +16,8 @@ resource "harness_platform_workspace" "workspace" {
     for_each = var.environment_variables
 
     content {
-      key        = each.key
-      value      = each.value
+      key        = environment_variable.key
+      value      = environment_variable.value
       value_type = "string"
     }
   }
@@ -27,7 +27,7 @@ resource "harness_platform_workspace" "workspace" {
 
     content {
       repository           = "terraform-playq-poc"
-      repository_path      = each.value
+      repository_path      = terraform_variable_file.value
       repository_connector = "account.PlayQDevOps"
       repository_branch    = var.git_ref
     }
