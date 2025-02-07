@@ -31,6 +31,7 @@ module "dosb_workflow" {
     var.organization.projects["devopssandbox"].environment_variables,
     each.value.environment_variables
   )
+  identifier       = each.value.identifier
   git_ref          = var.organization.projects.devopssandbox.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name
@@ -55,6 +56,7 @@ module "dev_workflow" {
     var.organization.projects["development"].environment_variables,
     each.value.environment_variables
   )
+  identifier       = each.value.identifier
   git_ref          = var.organization.projects.development.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name
@@ -80,6 +82,7 @@ module "stg_workflow" {
     var.organization.projects["staging"].environment_variables,
     each.value.environment_variables
   )
+  identifier       = each.value.identifier
   git_ref          = var.organization.projects.staging.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name

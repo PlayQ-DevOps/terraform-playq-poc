@@ -13,6 +13,11 @@ variable "git_ref" {
   description = "The branch or tag to reference from the git repository."
 }
 
+variable "identifier" {
+  type        = string
+  description = "The identifier to used identify the Workspace, Pipeline and Trigger"
+}
+
 variable "module_file_path" {
   type        = string
   description = "The relative file path from root to the module source code."

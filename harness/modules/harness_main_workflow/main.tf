@@ -1,5 +1,5 @@
 resource "harness_platform_workspace" "workspace" {
-  identifier              = var.name
+  identifier              = var.identifier
   name                    = var.name
   org_id                  = var.org_id
   project_id              = var.project_id
@@ -35,7 +35,7 @@ resource "harness_platform_workspace" "workspace" {
 }
 
 resource "harness_platform_pipeline" "pipeline" {
-  identifier = var.name
+  identifier = var.identifier
   name       = var.name
   org_id     = var.org_id
   project_id = var.project_id
@@ -59,7 +59,7 @@ resource "harness_platform_pipeline" "pipeline" {
 }
 
 resource "harness_platform_triggers" "trigger" {
-  identifier = var.name
+  identifier = var.identifier
   name       = var.name
   org_id     = var.org_id
   project_id = var.project_id
