@@ -1,5 +1,5 @@
 variable "organization" {
-  description = "PlayQ Harness Organization Object Schema."
+  description = "PlayQ Harness Organization Schema."
 
   type = object({
     environment_variables = map(string)
