@@ -23,7 +23,7 @@ resource "harness_platform_workspace" "workspace" {
   }
 
   dynamic "terraform_variable_file" {
-    for_each = var.variables_file_paths
+    for_each = var.inputs_file_paths
 
     content {
       repository           = "terraform-playq-poc"
