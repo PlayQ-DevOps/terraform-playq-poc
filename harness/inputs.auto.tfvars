@@ -27,6 +27,8 @@ organization = {
           name                  = "poc_dosb_service_a"
           secrets_file_paths    = []
           trigger_file_paths = [
+"environments/.*",
+"environments/devopssandbox/.*",
             "environments/devopssandbox/service-a/.*",
             "terraform/service-a/.*"
           ]
@@ -39,6 +41,8 @@ organization = {
           name                  = "poc_dosb_service_b"
           secrets_file_paths    = []
           trigger_file_paths = [
+"environments/.*",
+"environments/devopssandbox/.*",
             "environments/devopssandbox/service-b/.*",
             "terraform/service-b/.*"
           ]
@@ -53,6 +57,8 @@ organization = {
           name               = "poc_dosb_service_c"
           secrets_file_paths = []
           trigger_file_paths = [
+"environments/.*",
+"environments/devopssandbox/.*",
             "environments/devopssandbox/service-c/.*",
             "terraform/service-c/.*"
           ]
