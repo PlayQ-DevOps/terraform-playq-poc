@@ -90,6 +90,10 @@ organization = {
           name                  = "poc_dev_service_a"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/development/inputs.tfvars",
+            "environments/development/secrets.tfvars",
             "environments/development/service-a/.*",
             "terraform/service-a/.*"
           ]
@@ -102,6 +106,10 @@ organization = {
           name                  = "poc_dev_service_b"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/development/inputs.tfvars",
+            "environments/development/secrets.tfvars",
             "environments/development/service-b/.*",
             "terraform/service-b/.*"
           ]
@@ -114,6 +122,10 @@ organization = {
           name                  = "poc_dev_service_c"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/development/inputs.tfvars",
+            "environments/development/secrets.tfvars",
             "environments/development/service-c/.*",
             "terraform/service-c/.*"
           ]
@@ -139,6 +151,10 @@ organization = {
           name                  = "poc_stg_service_a"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/staging/inputs.tfvars",
+            "environments/staging/secrets.tfvars",
             "environments/staging/service-a/.*",
             "terraform/service-a/.*"
           ]
@@ -151,6 +167,10 @@ organization = {
           name                  = "poc_stg_service_b"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/staging/inputs.tfvars",
+            "environments/staging/secrets.tfvars",
             "environments/staging/service-b/.*",
             "terraform/service-b/.*"
           ]
@@ -163,6 +183,10 @@ organization = {
           name                  = "poc_stg_service_c"
           secrets_file_paths    = []
           trigger_file_paths = [
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/staging/inputs.tfvars",
+            "environments/staging/secrets.tfvars",
             "environments/staging/service-c/.*",
             "terraform/service-c/.*"
           ]
