@@ -31,17 +31,17 @@ module "dosb_workflow" {
     var.organization.projects["devopssandbox"].environment_variables,
     each.value.environment_variables
   )
-  identifier       = each.value.identifier
+  identifier = each.value.identifier
+  inputs_file_paths = distinct(concat(
+    var.organization.inputs_file_paths,
+    var.organization.projects["devopssandbox"].inputs_file_paths,
+    each.value.inputs_file_paths,
+  ))
   git_ref          = var.organization.projects.devopssandbox.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["devopssandbox"].id
-  variables_file_paths = distinct(concat(
-    var.organization.variables_file_paths,
-    var.organization.projects["devopssandbox"].variables_file_paths,
-    each.value.variables_file_paths,
-  ))
 }
 
 module "dev_workflow" {
@@ -56,17 +56,17 @@ module "dev_workflow" {
     var.organization.projects["development"].environment_variables,
     each.value.environment_variables
   )
-  identifier       = each.value.identifier
+  identifier = each.value.identifier
+  inputs_file_paths = distinct(concat(
+    var.organization.inputs_file_paths,
+    var.organization.projects["development"].inputs_file_paths,
+    each.value.inputs_file_paths,
+  ))
   git_ref          = var.organization.projects.development.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["development"].id
-  variables_file_paths = distinct(concat(
-    var.organization.variables_file_paths,
-    var.organization.projects["development"].variables_file_paths,
-    each.value.variables_file_paths,
-  ))
 }
 
 
@@ -82,15 +82,15 @@ module "stg_workflow" {
     var.organization.projects["staging"].environment_variables,
     each.value.environment_variables
   )
-  identifier       = each.value.identifier
+  identifier = each.value.identifier
+  inputs_file_paths = distinct(concat(
+    var.organization.inputs_file_paths,
+    var.organization.projects["staging"].inputs_file_paths,
+    each.value.inputs_file_paths,
+  ))
   git_ref          = var.organization.projects.staging.git_ref
   module_file_path = each.value.module_file_path
   name             = each.value.name
   org_id           = harness_platform_organization.organization.id
   project_id       = harness_platform_project.project["staging"].id
-  variables_file_paths = distinct(concat(
-    var.organization.variables_file_paths,
-    var.organization.projects["staging"].variables_file_paths,
-    each.value.variables_file_paths,
-  ))
 }

@@ -18,6 +18,11 @@ variable "identifier" {
   description = "The identifier to used identify the Workspace, Pipeline and Trigger"
 }
 
+variable "inputs_file_paths" {
+  type        = list(string)
+  description = "The list of relative file paths from root to the tfvars files."
+}
+
 variable "module_file_path" {
   type        = string
   description = "The relative file path from root to the module source code."
@@ -37,9 +42,3 @@ variable "project_id" {
   type        = string
   description = "The harness project identifier."
 }
-
-variable "variables_file_paths" {
-  type        = list(string)
-  description = "The list of relative file paths from root to the tfvars files."
-}
-
