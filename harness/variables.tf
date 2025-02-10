@@ -18,7 +18,7 @@ variable "organization" {
       secrets_file_paths    = list(string)
 
       workflows = list(object({
-        changed_files         = string
+        trigger_file_paths    = list(string)
         environment_variables = map(string)
         identifier            = string
         inputs_file_paths     = list(string)

@@ -57,9 +57,9 @@ resource "harness_platform_pipeline" "pipeline" {
             - name: GIT_TAG
               type: String
               value: <+input>
-            - name: CHANGED_FILES
+            - name: TRIGGER_FILE_PATHS
               type: String
-              value: ${var.changed_files} 
+              value: ${join(",", var.trigger_file_paths)} 
       projectIdentifier: ${var.project_id}
       orgIdentifier: ${var.org_id}
   EOT

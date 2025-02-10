@@ -87,7 +87,7 @@ resource "harness_platform_triggers" "trigger" {
               payloadConditions:
                 - key: changedFiles
                   operator: In
-                  value: ${var.changed_files}
+                  value: ${join(",", var.trigger_file_paths)} 
                 - key: targetBranch
                   operator: Equals
                   value: ${var.git_ref}

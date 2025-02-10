@@ -1,8 +1,3 @@
-variable "changed_files" {
-  type        = string
-  description = "The comma separated list of files to trigger on."
-}
-
 variable "environment_variables" {
   type        = map(string)
   description = "The map of environment variables."
@@ -41,4 +36,9 @@ variable "org_id" {
 variable "project_id" {
   type        = string
   description = "The harness project identifier."
+}
+
+variable "trigger_file_paths" {
+  type        = string
+  description = "The comma separated list of files to trigger on."
 }
