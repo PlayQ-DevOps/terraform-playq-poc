@@ -39,6 +39,6 @@ variable "project_id" {
 }
 
 variable "trigger_file_paths" {
-  type        = string
+  type        = list(string)
   description = "The comma separated list of files to trigger on."
 }
