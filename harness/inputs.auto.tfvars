@@ -27,8 +27,10 @@ organization = {
           name                  = "poc_dosb_service_a"
           secrets_file_paths    = []
           trigger_file_paths = [
-            "environments/.*",
-            "environments/devopssandbox/.*",
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/devopssandbox/inputs.tfvars",
+            "environments/devopssandbox/secrets.tfvars",
             "environments/devopssandbox/service-a/.*",
             "terraform/service-a/.*"
           ]
@@ -41,8 +43,10 @@ organization = {
           name                  = "poc_dosb_service_b"
           secrets_file_paths    = []
           trigger_file_paths = [
-            "environments/.*",
-            "environments/devopssandbox/.*",
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/devopssandbox/inputs.tfvars",
+            "environments/devopssandbox/secrets.tfvars",
             "environments/devopssandbox/service-b/.*",
             "terraform/service-b/.*"
           ]
@@ -57,8 +61,10 @@ organization = {
           name               = "poc_dosb_service_c"
           secrets_file_paths = []
           trigger_file_paths = [
-            "environments/.*",
-            "environments/devopssandbox/.*",
+            "environments/inputs.tfvars",
+            "environments/secrets.tfvars",
+            "environments/devopssandbox/inputs.tfvars",
+            "environments/devopssandbox/secrets.tfvars",
             "environments/devopssandbox/service-c/.*",
             "terraform/service-c/.*"
           ]
