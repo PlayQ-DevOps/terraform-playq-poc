@@ -30,6 +30,12 @@ module "dosb_workflow" {
     var.organization.projects["devopssandbox"].environment_variables,
     each.value.environment_variables
   )
+  environment_secrets = merge(
+    # last entry takes precedence
+    var.organization.environment_secrets,
+    var.organization.projects["devopssandbox"].environment_secrets,
+    each.value.environment_secrets
+  )
   identifier = each.value.identifier
   inputs_file_paths = distinct(concat(
     var.organization.inputs_file_paths,
@@ -54,6 +60,12 @@ module "dev_workflow" {
     var.organization.environment_variables,
     var.organization.projects["development"].environment_variables,
     each.value.environment_variables
+  )
+  environment_secrets = merge(
+    # last entry takes precedence
+    var.organization.environment_secrets,
+    var.organization.projects["development"].environment_secrets,
+    each.value.environment_secrets
   )
   identifier = each.value.identifier
   inputs_file_paths = distinct(concat(
@@ -80,6 +92,12 @@ module "stg_workflow" {
     var.organization.environment_variables,
     var.organization.projects["staging"].environment_variables,
     each.value.environment_variables
+  )
+  environment_secrets = merge(
+    # last entry takes precedence
+    var.organization.environment_secrets,
+    var.organization.projects["staging"].environment_secrets,
+    each.value.environment_secrets
   )
   identifier = each.value.identifier
   inputs_file_paths = distinct(concat(

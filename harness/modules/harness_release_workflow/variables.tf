@@ -3,6 +3,11 @@ variable "environment_variables" {
   description = "The map of environment variables."
 }
 
+variable "environment_secrets" {
+  type        = map(string)
+  description = "The map of environment secrets."
+}
+
 variable "git_ref" {
   type        = string
   description = "The branch or tag to reference from the git repository."

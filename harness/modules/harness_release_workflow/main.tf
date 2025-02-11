@@ -22,6 +22,16 @@ resource "harness_platform_workspace" "workspace" {
     }
   }
 
+  dynamic "environment_secret" {
+    for_each = var.environment_secrets
+
+    content {
+      key        = environment_secret.key
+      value      = environment_secret.value
+      value_type = "secret"
+    }
+  }
+
   dynamic "terraform_variable_file" {
     for_each = var.inputs_file_paths
 
