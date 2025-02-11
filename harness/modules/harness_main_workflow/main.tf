@@ -45,7 +45,7 @@ resource "harness_platform_pipeline" "pipeline" {
         identifier: ${var.name}
         template:
             templateRef: account.platform_infra_main
-            versionLabel: v0.0.1
+            versionLabel: v0.0.2-beta
             templateInputs:
                 stages:
                     - stage:
