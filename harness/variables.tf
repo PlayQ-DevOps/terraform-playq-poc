@@ -3,6 +3,7 @@ variable "organization" {
 
   type = object({
     environment_variables = map(string)
+    environment_secrets   = map(string)
     identifier            = string
     inputs_file_paths     = list(string)
     name                  = string
@@ -11,6 +12,7 @@ variable "organization" {
     projects = map(object({
       color                 = string
       environment_variables = map(string)
+      environment_secrets   = map(string)
       git_ref               = string
       identifier            = string
       inputs_file_paths     = list(string)
@@ -20,6 +22,7 @@ variable "organization" {
       workflows = list(object({
         trigger_file_paths    = list(string)
         environment_variables = map(string)
+        environment_secrets   = map(string)
         identifier            = string
         inputs_file_paths     = list(string)
         module_file_path      = string
