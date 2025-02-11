@@ -63,7 +63,7 @@ resource "harness_platform_pipeline" "pipeline" {
   yaml       = <<-EOT
     pipeline:
       name: ${var.name}
-      identifier: ${var.name}
+      identifier: ${var.identifier}
       template:
         templateRef: account.platform_infra_release
         versionLabel: v0.0.1
