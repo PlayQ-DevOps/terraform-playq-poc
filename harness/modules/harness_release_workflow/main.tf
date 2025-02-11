@@ -22,12 +22,12 @@ resource "harness_platform_workspace" "workspace" {
     }
   }
 
-  dynamic "environment_secret" {
+  dynamic "environment_variable" {
     for_each = var.environment_secrets
 
     content {
-      key        = environment_secret.key
-      value      = environment_secret.value
+      key        = environment_variable.key
+      value      = environment_variable.value
       value_type = "secret"
     }
   }
