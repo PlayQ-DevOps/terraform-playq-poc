@@ -43,6 +43,11 @@ variable "project_id" {
   description = "The harness project identifier."
 }
 
+variable "secrets_file_paths" {
+  type        = list(string)
+  description = "The list of relative file paths from root to the tfvars files."
+}
+
 variable "trigger_file_paths" {
   type        = list(string)
   description = "The comma separated list of files to trigger on."

@@ -42,11 +42,16 @@ module "dosb_workflow" {
     var.organization.projects["devopssandbox"].inputs_file_paths,
     each.value.inputs_file_paths,
   ))
-  git_ref            = var.organization.projects.devopssandbox.git_ref
-  module_file_path   = each.value.module_file_path
-  name               = each.value.name
-  org_id             = harness_platform_organization.organization.id
-  project_id         = harness_platform_project.project["devopssandbox"].id
+  git_ref          = var.organization.projects.devopssandbox.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
+  org_id           = harness_platform_organization.organization.id
+  project_id       = harness_platform_project.project["devopssandbox"].id
+  secrets_file_paths = distinct(concat(
+    var.organization.secrets_file_paths,
+    var.organization.projects["devopssandbox"].secrets_file_paths,
+    each.value.secrets_file_paths,
+  ))
   trigger_file_paths = each.value.trigger_file_paths
 }
 
@@ -73,11 +78,16 @@ module "dev_workflow" {
     var.organization.projects["development"].inputs_file_paths,
     each.value.inputs_file_paths,
   ))
-  git_ref            = var.organization.projects.development.git_ref
-  module_file_path   = each.value.module_file_path
-  name               = each.value.name
-  org_id             = harness_platform_organization.organization.id
-  project_id         = harness_platform_project.project["development"].id
+  git_ref          = var.organization.projects.development.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
+  org_id           = harness_platform_organization.organization.id
+  project_id       = harness_platform_project.project["development"].id
+  secrets_file_paths = distinct(concat(
+    var.organization.secrets_file_paths,
+    var.organization.projects["development"].secrets_file_paths,
+    each.value.secrets_file_paths,
+  ))
   trigger_file_paths = each.value.trigger_file_paths
 }
 
@@ -105,10 +115,15 @@ module "stg_workflow" {
     var.organization.projects["staging"].inputs_file_paths,
     each.value.inputs_file_paths,
   ))
-  git_ref            = var.organization.projects.staging.git_ref
-  module_file_path   = each.value.module_file_path
-  name               = each.value.name
-  org_id             = harness_platform_organization.organization.id
-  project_id         = harness_platform_project.project["staging"].id
+  git_ref          = var.organization.projects.staging.git_ref
+  module_file_path = each.value.module_file_path
+  name             = each.value.name
+  org_id           = harness_platform_organization.organization.id
+  project_id       = harness_platform_project.project["staging"].id
+  secrets_file_paths = distinct(concat(
+    var.organization.secrets_file_paths,
+    var.organization.projects["staging"].secrets_file_paths,
+    each.value.secrets_file_paths,
+  ))
   trigger_file_paths = each.value.trigger_file_paths
 }

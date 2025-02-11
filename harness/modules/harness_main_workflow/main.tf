@@ -42,6 +42,17 @@ resource "harness_platform_workspace" "workspace" {
       repository_branch    = var.git_ref
     }
   }
+
+  dynamic "terraform_variable_file" {
+    for_each = var.secrets_file_paths
+
+    content {
+      repository           = "terraform-playq-poc"
+      repository_path      = terraform_variable_file.value
+      repository_connector = "account.PlayQDevOps"
+      repository_branch    = var.git_ref
+    }
+  }
 }
 
 resource "harness_platform_pipeline" "pipeline" {
