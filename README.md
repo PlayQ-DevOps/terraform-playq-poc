@@ -18,3 +18,9 @@
 ## Release Strategy
 
 ![ReleaseStrategy](ReleaseStrategy.png "ReleaseStrategy")
+
+
+## Workflow with Secrets
+- use decrypt-secrets.sh. It decrypts all secrets, allowing you to change the secret you need.
+- after updating the secret, use encrypt-secrets.sh to encrypt it back.
+- finally, commit and push the encrypted file.
