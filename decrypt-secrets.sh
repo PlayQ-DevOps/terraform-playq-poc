@@ -1,10 +1,14 @@
 #!/bin/bash
 
 #
-# For script usage You have to login to AWS first
+# For script usage You have to:
+# 1) login to AWS first
 # 'aws sso login' command or use env vars for aws login
 # https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-envvars.html
 #
+# 2) export KMS_KEY_ARN="$aws_key_value"
+
+
 
 set -e  # Exit if any command fails
 
