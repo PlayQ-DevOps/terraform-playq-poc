@@ -10,6 +10,29 @@
 
 set -e  # Exit if any command fails
 
+# Show usage manual
+show_usage() {
+    cat << EOF
+Usage: $0 [OPTIONS]
+
+OPTIONS:
+  -h, --help        Show this help message
+
+Before running the script, ensure the following environment variable is set:
+  - KMS_KEY_ARN     Your AWS KMS key ARN, e.g. arn:aws:kms:region:account-id:key/key-id
+
+Example usage:
+  export KMS_KEY_ARN="arn:aws:kms:region:account-id:key/key-id"
+  ./decrypt-secrets.sh
+EOF
+}
+
+# Parse command-line arguments for help flag
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+    show_usage
+    exit 0
+fi
+
 # Check if KMS_KEY_ARN is set
 if [[ -z "$KMS_KEY_ARN" ]]; then
     echo "❌ ERROR: KMS_KEY_ARN is not set. Please export it first."
